@@ -11,7 +11,7 @@ head(aData)
 library(timeDate)
 
 aData$daytype <- ifelse (isWeekend(strptime(aData$date, "%m/%d/%Y" )), "weekend", "weekday")
-aData$daytype <- as.factor(aData$daytype)
+aData <- transform(aData, daytype = factor(daytype))
 
 ## b. Create a dataset with the NA removed
 aData.rmNA <- aData[which(!is.na(aData$steps)), ]
